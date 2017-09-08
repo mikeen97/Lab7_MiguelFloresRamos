@@ -20,10 +20,12 @@ public class Principal extends javax.swing.JFrame {
      */
     public ArrayList<Lugares> ListLugares = new ArrayList();
     public ArrayList<Personas> ListPersonas = new ArrayList();
+    AdministrarPersonas ap = new AdministrarPersonas("./amigos.cbm");
 
     public Principal() {
         initComponents();
-
+        ap.cargarArchivo();
+        ListPersonas = ap.getListaPersonas();
     }
 
     /**
@@ -292,12 +294,16 @@ public class Principal extends javax.swing.JFrame {
         String nombre = tf_lugaresNombre.getText(), clima = tf_lugaresClima.getText(), TipoZona = tf_lugaresZona.getText();
         int extencionTerritorial = Integer.parseInt(tf_lugaresExtencion.getText()), CantidadPersonas = Integer.parseInt(tf_lugaresHabitantes.getText());
         Date AnoFundacion = JC_lugaresFundacion.getDate();
+        AdministrarPersonas ap = new AdministrarPersonas("./personas.cbm");
+        ap.cargarArchivo();
         Lugares e = new Lugares(nombre, clima, extencionTerritorial, CantidadPersonas, TipoZona, TipoZona, ListPersonas);
         e.start();
+        ap.escribirArchivo();
         ListLugares.add(e);
         for (Lugares t1 : ListLugares) {
             System.out.println("Nombre " + t1.getNombre());
         }
+
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
