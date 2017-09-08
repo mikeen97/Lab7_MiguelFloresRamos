@@ -7,6 +7,7 @@ package lab7_miguelangelflores;
 
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -67,6 +68,7 @@ public class Principal extends javax.swing.JFrame {
         JC_lugaresFundacion = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel8.setText("Registro De Personas");
@@ -208,10 +210,23 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Cargar Personas");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(59, 59, 59))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -243,19 +258,18 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(27, 27, 27)
-                                .addComponent(JC_lugaresFundacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(JC_lugaresFundacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(jButton6)))
                 .addContainerGap(113, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(16, 16, 16)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -295,17 +309,10 @@ public class Principal extends javax.swing.JFrame {
         String nombre = tf_lugaresNombre.getText(), clima = tf_lugaresClima.getText(), TipoZona = tf_lugaresZona.getText();
         int extencionTerritorial = Integer.parseInt(tf_lugaresExtencion.getText()), CantidadPersonas = Integer.parseInt(tf_lugaresHabitantes.getText());
         Date AnoFundacion = JC_lugaresFundacion.getDate();
-        AdministrarPersonas ap = new AdministrarPersonas("./personas.cbm");
-        ap.cargarArchivo();
         Lugares e = new Lugares(nombre, clima, extencionTerritorial, CantidadPersonas, TipoZona, TipoZona, ListPersonas);
         e.start();
-        ap.escribirArchivo();
         ListLugares.add(e);
-        for (Lugares t1 : ListLugares) {
-            System.out.println("Nombre " + t1.getNombre());
-        }
-
-
+        JOptionPane.showMessageDialog(null, "Se creo el lugar");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -321,6 +328,7 @@ public class Principal extends javax.swing.JFrame {
         ListPersonas.add(new Personas(nombre, id, lugar, edad, estatura, profesion));
         ap.getListaPersonas().add(new Personas(nombre, id, lugar, edad, estatura, profesion));
         ap.escribirArchivo();
+        JOptionPane.showMessageDialog(null, "Se creo exitosamente!!");
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -331,6 +339,11 @@ public class Principal extends javax.swing.JFrame {
         this.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        ap.cargarArchivo();
+        ListPersonas = ap.getListaPersonas();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,6 +396,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
