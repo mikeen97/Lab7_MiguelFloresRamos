@@ -5,11 +5,13 @@
  */
 package lab7_miguelangelflores;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Miguel Flores
  */
-public class Personas {
+public class Personas implements Serializable {
 
     public String nombre;
     public String id;
@@ -17,6 +19,7 @@ public class Personas {
     public int edad;
     public int estatura;
     public String profesion;
+    public static final long SerailVersionUID = 777L;
 
     public Personas(String nombre, String id, String lugar, int edad, int estatura, String profesion) {
         this.nombre = nombre;

@@ -20,12 +20,10 @@ public class Principal extends javax.swing.JFrame {
      */
     public ArrayList<Lugares> ListLugares = new ArrayList();
     public ArrayList<Personas> ListPersonas = new ArrayList();
-    AdministrarPersonas ap = new AdministrarPersonas("./amigos.cbm");
+    AdministrarPersonas ap = new AdministrarPersonas("./personas.cbm");
 
     public Principal() {
         initComponents();
-        ap.cargarArchivo();
-        ListPersonas = ap.getListaPersonas();
     }
 
     /**
@@ -53,6 +51,7 @@ public class Principal extends javax.swing.JFrame {
         tf_PersonasProfesion = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -175,6 +174,8 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addGap(77, 77, 77))
         );
+
+        jButton5.setText("jButton5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -318,6 +319,8 @@ public class Principal extends javax.swing.JFrame {
         String nombre = tf_PersonasNombre.getText(), id = tf_PersonasIdentidad.getText(), lugar = tf_PersonasLugar.getText(), profesion = tf_PersonasProfesion.getText();
         int edad = Integer.parseInt(tf_PersonasEdad.getText()), estatura = Integer.parseInt(tf_PersonasEstatura.getText());
         ListPersonas.add(new Personas(nombre, id, lugar, edad, estatura, profesion));
+        ap.getListaPersonas().add(new Personas(nombre, id, lugar, edad, estatura, profesion));
+        ap.escribirArchivo();
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -379,6 +382,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
