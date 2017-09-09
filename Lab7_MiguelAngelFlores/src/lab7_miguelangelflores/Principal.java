@@ -310,6 +310,7 @@ public class Principal extends javax.swing.JFrame {
         int extencionTerritorial = Integer.parseInt(tf_lugaresExtencion.getText()), CantidadPersonas = Integer.parseInt(tf_lugaresHabitantes.getText());
         Date AnoFundacion = JC_lugaresFundacion.getDate();
         Lugares e = new Lugares(nombre, clima, extencionTerritorial, CantidadPersonas, TipoZona, TipoZona, ListPersonas);
+        ListLugares.add(e);
         e.start();
         ListLugares.add(e);
         JOptionPane.showMessageDialog(null, "Se creo el lugar");
